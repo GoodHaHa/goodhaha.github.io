@@ -1,64 +1,171 @@
 ---
+layout: default
 ---
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ site.title }}</title>
-	<meta name="keywords" content="{{ site.keywords }}">
-	<meta name="description" content="{{ site.description }}">
-  <link rel="stylesheet" href="combo.css">
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  {% if site.favicon %}<link rel="shortcut icon" href="{{ site.favicon }}" type="image/x-icon">{% endif %}
-	{% if site.touch_icon %}<link rel="apple-touch-icon" href="{{ site.touch_icon }}">{% endif %}
-</head>
-<body>
-  <div id="main">
-
-    <nav><ul>
-      {% for node in site.posts reversed %}
-        {% capture id %}{{ node.id | remove:'/' | downcase }}{% endcapture %}
-        <li class="p-{{id}}"><a href="#{{id}}">{{node.title}}</a></li>
-      {% endfor %}
-    </ul></nav>
-
-
-    {% for page in site.posts reversed %}
-      {% capture id %}{{ page.id | remove:'/' | downcase }}{% endcapture %}
-      <div id="{{id}}" class="section p-{{id}}">
-        {% if page.icon %}
-        <div class="subtlecircle sectiondivider imaged">
-          <img src="{{page.icon}}" alt="section icon" />
-          <h5 class="icon-title">{{ page.title }}</h5>
-        </div>
-        {% elsif page.fa-icon %}
-        <div class="subtlecircle sectiondivider faicon">
-          <span class="fa-stack">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-{{ page.fa-icon }} fa-stack-1x"></i>
-          </span>
-          <h5 class="icon-title">{{ page.title }}</h5>
-        </div>
-        {% endif %}
-        <div class="container {{ page.style }}">
-          {{ page.content }}
-        </div>
+<div id="index" class="row">
+  <div class="col-sm-9">
+    <div class="post-area">
+      <!-- small button -->
+     <!--  <p class="pull-right visible-xs">
+       <button>toggle</button>
+     </p> -->
+      <div class="post-list-header">
+        Posts
       </div>
-    {% endfor %}
+      <div class="post-list-body">
+        
+        <div class="all-posts" post-cate="All">
+          {% for post in paginator.posts %}
+            <a class="post-list-item" href="{{ post.url | prepend: site.baseurl }}">
+              	<h2>
+              	<b>{{ post.title }}</b>
+              	</h2>
+			
+			<div class="post-content-preview">
+				{{ post.content | strip_html | truncate:350 }}
+			</div>
+			
+			<span style="font-style:oblique">Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}</span>
+              	<!--<span class="">Posted by Zhao on {{ post.date | date: "%b %-d, %Y" }}</span>-->	
+            </a>
+			
+			
+			<!--<p class="post-meta">Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}</p>-->
+          {% endfor %}
 
-
-    <div id="footer" class="section text-white">
-      <div class="container">
-        {% capture foottext %} {% include footer.md %} {% endcapture %}
-        {{ foottext | markdownify }}
+		<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+		
+			<ul class="pagination pagination-right">
+				<li>
+					<span class="page_number">{{paginator.page}}/{{paginator.total_pages}}</span>
+				</li>
+				<li>
+					<a href="/">first</a>
+				</li>
+				{% if paginator.previous_page %} 
+				{% if paginator.previous_page == 1 %} 
+				<li>
+					<a href="/" class="current"> prev </a> 
+				</li>
+				{% else %}
+				<li>
+					<a href="/page{{paginator.previous_page}}"> prev </a>
+				</li>
+				{% endif %} 
+				{% else %}
+				<li class="disabled">
+					<span> prev </span>
+				</li>
+				{% endif %} 
+				{% for count in (1..paginator.total_pages) limit:8 %} 
+				{% if count == paginator.page %}
+				<li class="disabled">
+					<span class="current-page">{{count}}</span>
+				</li>
+				{% else %} 
+				<li>
+				<a href="/page{{count}}">{{count}}</a>
+				</li>
+				{% endif %} 
+				{% endfor %} 
+				{% if paginator.next_page %}
+				<li>
+					<a href="/page{{paginator.next_page}}"> next </a> 
+				</li>
+				{% else %}
+				<li class="disabled">
+					<span> next </span>
+				</li>
+				{% endif %} 
+				<li>
+				<a href="/page{{paginator.total_pages}}">last</a> 
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+			<!--{% for post in site.posts %}
+			  <li class="listing">
+				<hr class="slender">
+				<a href="{{ post.url }}"><h4 class="contrast">{{ post.title }}</h4></a>
+				<span class="smaller">{{ post.date | date: "%B %-d, %Y" }}</span>  <br/>
+				<div>{{ post.excerpt }}</div>	
+			  </li>
+			{% endfor %}-->
+        </div>
+        <!-- <div class="posts-in-categories"> -->
+        {% for category in site.categories %}
+          <div post-cate="{{category | first}}">
+            {% for posts in category  %}
+              {% for post in posts %}
+                {% if post.url %}
+                  <a href="{{ post.url }}" class="post-list-item">
+                    <h2>
+                    {{ post.title }}
+                    </h2>
+                    <span class="">{{ post.date | date: "%b %-d, %Y" }}</span>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+          </div>
+        {% endfor %}
+        
+        <!-- </div> -->
       </div>
     </div>
   </div>
+  <div class="col-sm-3">
 
-{% include analytics.html %}
-</body>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="site.js"></script>
-</html>
+    <div class="shadow-corner-curl hidden-xs">
+      <div class="categories-list-header">
+        Categories
+      </div>
+      
+      <a href="javascript:;" class="categories-list-item" cate="All">
+        All<span class="my-badge"> {{site.posts | size}}</span>
+      </a>
+      {% for category in site.categories order:ascending %}
+        <a href="javascript:;" class="categories-list-item" cate="{{ category | first }}">
+          {{ category | first }} <span class="my-badge">{{ category | last | size }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+  
+	<!-- 
+		<div class="divcss5-right"> 
+			<span class="page_number">第{{paginator.page}}页/共{{paginator.total_pages}}页</span> 
+			<a href="/">第一页</a> 
+			{% if paginator.previous_page %} 
+			{% if paginator.previous_page == 1 %} 
+			<a href="/" class="current"> <<前一页 </a> 
+			{% else %} 
+			<a href="/page{{paginator.previous_page}}"> <<前一页 </a> 
+			{% endif %} 
+			{% else %} 
+			<span> <<前一页 </span> 
+			{% endif %} 
+			{% for count in (1..paginator.total_pages) limit:8 %} 
+			{% if count == paginator.page %} 
+			<span class="current-page">{{count}}</span> 
+			{% else %} 
+			<a href="/page{{count}}">{{count}}</a> 
+			{% endif %} 
+			{% endfor %} 
+
+			{% if paginator.next_page %} 
+			<a href="/page{{paginator.next_page}}"> 后一页>> </a> 
+			{% else %} 
+			<span> 后一页>> </span> 
+			{% endif %} 
+			<a href="/page{{paginator.total_pages}}">最后一页</a> 
+		</div>
+	分页测试 -->
+
+		
+
+    <!--<script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>-->
