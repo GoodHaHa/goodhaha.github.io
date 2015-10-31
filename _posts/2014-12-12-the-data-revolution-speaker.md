@@ -1,6 +1,6 @@
 ---
 layout: post
-author: zhao
+author: sun
 title: "The Data Revolution Speaker（Hadoop之父Doug Cutting在清华的讲座）"
 date: 2014-12-12 20:14:50
 categories: Meeting
