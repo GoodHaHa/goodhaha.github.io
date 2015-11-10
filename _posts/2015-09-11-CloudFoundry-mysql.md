@@ -2,7 +2,7 @@
 layout: post
 author: sun
 title:  "Cloud Foundry mysql service 安装"
-date:   2015-09-10 17:11:30
+date:   2015-09-11 23:12:50
 categories: CLoudFoundry
 ---
 
