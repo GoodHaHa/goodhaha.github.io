@@ -23,7 +23,7 @@ categories: CLoudFoundry
 
 ####cd workspace目录下
 
-~~~java shell
+~~~java
 cd ~/workspace
 git clone https://github.com/cloudfoundry/cf-mysql-release.git
 ~~~
@@ -51,13 +51,13 @@ git clone https://github.com/cloudfoundry/cf-mysql-release.git
 
 ####需要先安装spiff，执行以下脚本
 
-~~~java shell
+~~~java 
 /home/vagrant/workspace/cf-mysql-release/bosh-lite/make_manifest
 ~~~
 
 ####此时会在/home/vagrant/workspace/cf-mysql-release/bosh-lite/manifests路径下生成并指定cf-mysql-manifest.yml部署文件，若没指定则可手动指定
 
-~~~java shell
+~~~java 
 bosh deployment /home/vagrant/workspace/cf-mysql-release/bosh-lite/manifests/cf-mysql-manifest.yml
 ~~~
 
@@ -65,7 +65,7 @@ bosh deployment /home/vagrant/workspace/cf-mysql-release/bosh-lite/manifests/cf-
 
 ####以上准备就绪后则可执行
 
-~~~java shell
+~~~java 
 bosh deploy 
 ~~~
 
@@ -73,7 +73,7 @@ bosh deploy
 
 ###7.查看部署情况
 
-~~~java shell
+~~~java 
 bosh vms 
 ~~~
 
@@ -83,7 +83,7 @@ bosh vms
 
 ###8.创建mysql service  broker
 
-~~~java shell
+~~~java
  bosh run errand broker-registrar 
 ~~~
 
@@ -91,7 +91,7 @@ bosh vms
 
 ####创建rule.json文件，内容如下，具体根据IP设定
 
-~~~java shell
+~~~java 
 
 	[
 		{
@@ -108,13 +108,13 @@ bosh vms
 
 ####为p-mysql service 服务创建绑定Security group
 
-~~~java shell
+~~~java
 cf create-security-group p-mysql rule.json
 cf bind-running-security-group p-mysql 
 ~~~
 
 ###9.测试mysql是否能够正常使用
 
-~~~java shell
+~~~java 
 bosh run errand acceptance-tests 
 ~~~
