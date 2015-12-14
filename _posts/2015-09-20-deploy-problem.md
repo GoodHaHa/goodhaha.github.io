@@ -2,11 +2,11 @@
 layout: post
 author: sun
 title:  "Cloud Foundry 安装问题汇总"
-date:   2015-09-20 16:02:20
+date:   2015-09-25 11:12:49
 categories: CLoudFoundry
 ---
 
-# cloud foundry 安装错误汇集
+# cloud foundry 问题汇集
 
 ------
 
@@ -59,3 +59,29 @@ Failed compiling packages > galera/d15a1d2d15e5e7417278d4aa1b908566022b9623: Act
 问题分析：
 
 > * mysql service安装好之后，若出现该问题说明cf-mysql-broker 虚拟机咩有 api.buaa.xip.io的路由规则，最简单的方式就是直接在/etc/hosts文件中加入（IP + api.buaa.xip.io）信息
+
+##无法连接ccdb
+
+看了下面这个帖子遇到了无法连接的问题
+
+>https://github.com/nimbus-cloud/cloudfoundry-documentation/wiki/Connecting-to-the-PostgreSQL-Database
+
+```java
+
+root@b7ce202f-d03b-4078-b0ea-36511bb6d846:/var/vcap/data/packages/postgres/b63fe0176a93609bd4ba44751ea490a3ee0f646c.1-64917e330bb9c52377b380eb3742f1fae01a71b0/bin# ./psql -h 10.0.0.21 -p 5524  ccdb -U ccadmin
+Password for user ccadmin: 
+psql (9.0.3, server 9.4.2)
+WARNING: psql version 9.0, server version 9.4.
+         Some psql features might not work.
+Type "help" for help.
+
+Cannot read termcap database;
+using dumb terminal settings.
+Aborted
+
+```
+
+问题分析：
+
+> * 在shell输入  infocmp -C > /etc/termcap 
+
