@@ -10,4 +10,13 @@ permalink: /:year/:month/:day/:title/
 markdown: kramdown
 
 # 分页
-paginate: 5
+paginate: 10
+paginate_path: "page:num"
+
+# highlight
+# 本地用rouge, github上用pygments
+# highlighter: pygments
+# highlighter: rouge
+# highlighter: false
+
+encoding: UTF-8
