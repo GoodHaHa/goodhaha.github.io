@@ -1,9 +1,9 @@
 # Site settings
-title: PRAIRIE
-email: zhaodedong91@gmail.com
-description: 赵德栋的博客
+title: GoodHaHa
+email: sunwuhao@buaa.edu.cn
+description: 孙吴昊的博客
 
-github_username: zhaodedong
+github_username: GoodHaHa
 permalink: /:year/:month/:day/:title/
 
 # Build settings
