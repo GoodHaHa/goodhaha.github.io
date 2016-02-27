@@ -83,5 +83,5 @@ Aborted
 
 问题分析：
 
-> * 在shell输入  infocmp -C > /etc/termcap 
+> * 在shell输入  infocmp -C > /etc/termcap   然后再./psql -h 10.0.0.21 -p 5524  ccdb -U ccadmin
 
