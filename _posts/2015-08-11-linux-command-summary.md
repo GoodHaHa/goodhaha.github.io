@@ -1,12 +1,12 @@
 ---
 layout: post
-author: zhao
+author: sun
 title:  "Linux：常用命令总结"
 date:   2015-08-11
 categories: Linux
 ---
 
-##常用命令总结
+## 常用命令总结
 <table>
 <tbody>
 <tr>

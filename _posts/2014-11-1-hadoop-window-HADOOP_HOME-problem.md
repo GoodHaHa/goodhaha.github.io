@@ -6,7 +6,7 @@ date: 2014-11-1 21:14:50
 categories: something
 ---
 
-##The Data Revolution Speaker 讲座记录
+## The Data Revolution Speaker 讲座记录
 WIN7下运行hadoop程序报：Failed to locate the winutils binary in the hadoop binary path
 
 之前在mac上调试hadoop程序（mac之前配置过hadoop环境）一直都是正常的。因为工作需要，需要在windows上先调试该程序，然后再转到linux下。程序运行的过程中，报 Failed to locate the winutils binary in the hadoop binary path    java.io.IOException: Could not locate executable null \bin\winutils.exe in the Hadoop binaries.   

@@ -1,18 +1,18 @@
 ---
 layout: post
 author: sun
-title: "The Data Revolution Speaker（Hadoop之父Doug Cutting在清华的讲座）"
-date: 2014-12-12 20:14:50
+title:  "The Data Revolution Speaker（Hadoop之父Doug Cutting在清华的讲座）"
+date:  2014-12-12 20:14:50
 categories: Meeting
 ---
 
-##The Data Revolution Speaker 讲座记录
+## The Data Revolution Speaker 讲座记录
 
 >2014-12-12 14:30     清华大学FIT楼二路多功能厅
 
 整个讲座约一个小时，两点半左右开始，前半个小时左右Doug Cutting 总共大概7张PPT，后半个小时互动。
 
-##**演讲内容**
+## **演讲内容**
 
 Doug Cutting总共讲了大概7张PPT，PPT里面没什么内容，每张PPT只有一个标题，正文是一张图片，内容主要讲的是自己的开源事业、lucene、hadoop等。
 
@@ -58,7 +58,7 @@ Hadoop也类似，现在有很多的计算框架，Spark、Storm这类的。这�
 
 >这让我想到了操作系统，未必是windows最好，但是大家都习惯了，也就是够用了，再出现一个新的操作系统，除非你让我感觉有了你我就不想用windows了，windows已经够用了，不必非要把它换掉，类似道理。
 
-##**问答内容**
+## **问答内容**
 
 最后是提问时间，大该记录了几个问题：
 

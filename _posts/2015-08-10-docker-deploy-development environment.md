@@ -1,18 +1,18 @@
 ---
 layout: post
-author: zhao
+author: sun
 title:  "Docker：搭建开发环境（运行Eclipse等图形化界面程序）"
 date:   2015-08-10 20:14:50
 categories: Docker
 ---
 
-##基本说明
+## 基本说明
 
 两个月前的时候自己提出想通过Docker来搭建开发环境（http://blog.csdn.net/zhaodedong/article/details/46549279），能方便地供实验室的其他同学使用。我所谓的开发环境没太复杂，只是能在一个docker镜像中运行Mysql、Jdk、Eclipse等基本的软件，但是Eclipse是需要能通过Docker启动可视化的界面。
 
 最后这些功能的确能实现了，但是由于经常要在Windows中用PowerDesigner、Visio设计个数据库画个流程图什么的，Linux就不常作为桌面用了。因此对于Docker最初的设想就没有使用，时隔两个月，记录一下之前的学习过程。
 
-##编写Dockerfile
+## 编写Dockerfile
 
 我使用了Dockerfile来描述开发环境，下面是我写的一个只安装Eclipse的Dockerfile，诸如mysql，jdk什么的比较简单就不再写进来了。
 
@@ -47,7 +47,7 @@ ENV HOME /home/developer
 CMD /usr/bin/eclipse
 ~~~
 
-##Docker Build
+## Docker Build
 
 不多做描述，网上有很多教程讲Docker的基本操作。
 
@@ -55,7 +55,7 @@ CMD /usr/bin/eclipse
 docker build -t eclipse .
 ~~~
 
-##启动可视化的Eclipse
+## 启动可视化的Eclipse
 
 里面有的参数我也不是特别熟悉，由于没有深入研究Docker的各个参数，现在也只是处于知其然而不知其所以然的境界。
 
@@ -67,14 +67,14 @@ docker run -ti --rm \
 ~~~
 
 
-##注意
+## 注意
 
 中国的防火墙技术特别强大，但是网上的很多教程要不就是国外的要不就是国内拿过来随便翻译的，在这些教程里面经常会出现`RUN apt-get update` 这样的一个操作，这样是行不通的.......
 
 解决方式就是我在Dockerfile里面写的，自己来修改Ubuntu的源，由于是在学校，我用的是清华的源，效果还是不错的。
 
 
-##总结
+## 总结
 
 Docker是个很好玩的东西，对于比较喜欢新技术的人来说是一个非常值得尝试的对象。但是有点遗憾，以后的学习和工作不一定能用到Docker了，因此再学习Docker也只能是自己的业余爱好中玩一玩了。
 
@@ -82,7 +82,7 @@ Docker是个很好玩的东西，对于比较喜欢新技术的人来说是一�
 
 倒是看到了一些有趣的开源项目，直接编写的Dockerfile来配置和安装一个Hadoop集群，以后感兴趣的话可能会具体地尝试一下。
 
-##参考
+## 参考
 
 国内在Docker方面的资料还有所欠缺，至少在6月份我找资料的时候在各大博客网站中没有找到我需要的资料，谨列出对我帮助最大的几个。
 

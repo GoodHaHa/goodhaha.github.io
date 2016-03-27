@@ -10,7 +10,7 @@ categories: CLoudFoundry
 
 ------
 
-##环境错误
+## 环境错误
 
 ```java
 
@@ -39,7 +39,7 @@ Failed compiling packages > galera/d15a1d2d15e5e7417278d4aa1b908566022b9623: Act
 
 > * 在安装过程中需要执行编译，而执行部署的当前主机ruby不完整，将会出现该错误，此处为bundle未安装
 
-##路由错误
+## 路由错误
 
 该问题出自于，cf-mysql-service 部署好之后，但为成功启动。使用bosh ssh 登录到borker虚拟机，查看broker的log信息
 
@@ -60,7 +60,7 @@ Failed compiling packages > galera/d15a1d2d15e5e7417278d4aa1b908566022b9623: Act
 
 > * mysql service安装好之后，若出现该问题说明cf-mysql-broker 虚拟机咩有 api.buaa.xip.io的路由规则，最简单的方式就是直接在/etc/hosts文件中加入（IP + api.buaa.xip.io）信息
 
-##无法连接ccdb
+## 无法连接ccdb
 
 看了下面这个帖子遇到了无法连接的问题
 
